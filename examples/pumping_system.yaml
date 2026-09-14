@@ -6,26 +6,26 @@ components:
   P1:
     type: pump
     reliability:
-      distribution: exponential
+      model: exponential
       lambda: 1.0e-5
 
   P2:
     type: pump
     reliability:
-      distribution: exponential
+      model: exponential
       lambda: 1.2e-5
 
   V1:
     type: valve
     reliability:
-      distribution: weibull
+      model: weibull
       beta: 1.5
       eta: 100000
 
   HX1:
     type: heat_exchanger
     reliability:
-      distribution: constant
+      model: constant
       value: 0.995
 
 rbd:

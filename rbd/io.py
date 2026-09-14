@@ -29,6 +29,10 @@ def validate_document(data: dict[str, Any]) -> None:
             raise ValueError(f"Component {component_id!r} must define 'reliability'.")
         if not isinstance(component["reliability"], dict):
             raise ValueError(f"Component {component_id!r} reliability must be a mapping/object.")
+        if "model" not in component["reliability"]:
+            raise ValueError(
+                f"Component {component_id!r} reliability must define 'model'."
+            )
 
     if not isinstance(data.get("rbd"), dict):
         raise ValueError("YAML must contain an 'rbd' mapping/object.")

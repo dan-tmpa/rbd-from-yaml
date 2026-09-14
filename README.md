@@ -81,13 +81,13 @@ components:
   P1:
     type: pump
     reliability:
-      distribution: exponential
+      model: exponential
       lambda: 1.0e-5
 ```
 
 The component `type` is metadata and does not affect the calculation in the current version.
 
-Every component must contain a `reliability` mapping.
+Every component must contain a `reliability` mapping. Its required `model` parameter selects the reliability model used in the calculation.
 
 #### Exponential model
 
@@ -101,7 +101,7 @@ YAML:
 
 ```yaml
 reliability:
-  distribution: exponential
+  model: exponential
   lambda: 1.0e-5
 ```
 
@@ -119,7 +119,7 @@ YAML:
 
 ```yaml
 reliability:
-  distribution: weibull
+  model: weibull
   beta: 2.0
   eta: 50000
 ```
@@ -132,7 +132,7 @@ Useful for testing or when reliability is already supplied directly:
 
 ```yaml
 reliability:
-  distribution: constant
+  model: constant
   value: 0.99
 ```
 
@@ -247,19 +247,19 @@ components:
   P1:
     type: pump
     reliability:
-      distribution: exponential
+      model: exponential
       lambda: 1.0e-5
 
   P2:
     type: pump
     reliability:
-      distribution: exponential
+      model: exponential
       lambda: 1.2e-5
 
   V1:
     type: valve
     reliability:
-      distribution: weibull
+      model: weibull
       beta: 1.5
       eta: 100000
 
@@ -288,7 +288,7 @@ The repository intentionally separates:
 - reliability models; and
 - RBD evaluation.
 
-This makes it straightforward to add additional distributions or logic types later, such as `k_out_of_n` blocks.
+This makes it straightforward to add additional reliability models or logic types later, such as `k_out_of_n` blocks.
 
 ## Running tests
 
