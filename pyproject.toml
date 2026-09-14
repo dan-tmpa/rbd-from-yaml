@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rbd-yaml-reader"
+version = "0.1.0"
+description = "Read Reliability Block Diagrams from YAML and calculate system reliability."
+requires-python = ">=3.10"
+dependencies = [
+    "PyYAML>=6.0,<7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0,<9.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

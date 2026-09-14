@@ -1,0 +1,43 @@
+system:
+  id: SYS-001
+  name: Pumping System
+
+components:
+  P1:
+    type: pump
+    reliability:
+      distribution: exponential
+      lambda: 1.0e-5
+
+  P2:
+    type: pump
+    reliability:
+      distribution: exponential
+      lambda: 1.2e-5
+
+  V1:
+    type: valve
+    reliability:
+      distribution: weibull
+      beta: 1.5
+      eta: 100000
+
+  HX1:
+    type: heat_exchanger
+    reliability:
+      distribution: constant
+      value: 0.995
+
+rbd:
+  type: series
+  blocks:
+    - type: parallel
+      blocks:
+        - component: P1
+        - component: P2
+    - component: V1
+    - component: HX1
+
+analysis:
+  mission_time: 8760
+  time_unit: hour
